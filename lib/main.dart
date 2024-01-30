@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:messanger/features/chat_screen/feature.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+import 'application/utils.dart';
+import 'features/init/dependencies_provider/dependencies_provider.dart';
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      home: const Text('Flutter Demo Home Page'),
-    );
-  }
+void main() async {
+  runApp(
+    DependenciesProvider(
+      builder: (BuildContext context) {
+        return const MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'Flutter Demo',
+          home: ChatScreenFeature(),
+        );
+      },
+    ),
+  );
 }
 
