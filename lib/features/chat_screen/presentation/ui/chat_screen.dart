@@ -52,8 +52,7 @@ class ChatScreen extends StatelessWidget {
             ),
             const SizedBox(height: 24),
             Expanded(
-              child: BlocConsumer<ChatScreenBloc, ChatScreenState>(
-                listener: (context, state) {},
+              child: BlocBuilder<ChatScreenBloc, ChatScreenState>(
                 builder: (context, state) {
                   if (state is ChatScreenLoadingState) {
                     return const Center(child: CircularProgressIndicator());
