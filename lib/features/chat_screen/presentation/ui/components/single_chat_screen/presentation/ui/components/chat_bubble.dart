@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+//код с пэкеджа chat_bubbles: ^1.6.0, немного видоизменил
 import 'package:messanger/constants/app_colors.dart';
 
 //код с пэкеджа chat_bubbles: ^1.6.0, немного видоизменил
@@ -34,30 +35,14 @@ class BubbleSpecialThree extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool stateTick = false;
-    Icon? stateIcon;
     if (sent) {
       stateTick = true;
-      stateIcon = const Icon(
-        Icons.done,
-        size: 18,
-        color: Color(0xFF97AD8E),
-      );
     }
     if (delivered) {
       stateTick = true;
-      stateIcon = const Icon(
-        Icons.done_all,
-        size: 18,
-        color: Color(0xFF97AD8E),
-      );
     }
     if (seen) {
       stateTick = true;
-      stateIcon = const Icon(
-        Icons.done_all,
-        size: 18,
-        color: Color(0xFF92DEDA),
-      );
     }
 
     return Align(
@@ -76,15 +61,15 @@ class BubbleSpecialThree extends StatelessWidget {
                 ),
             margin: isSender
                 ? stateTick
-                    ? const EdgeInsets.fromLTRB(7, 7, 14, 7)
-                    : const EdgeInsets.fromLTRB(7, 7, 17, 7)
+                ? const EdgeInsets.fromLTRB(7, 7, 14, 7)
+                : const EdgeInsets.fromLTRB(7, 7, 17, 7)
                 : const EdgeInsets.fromLTRB(17, 7, 7, 7),
             child: Row(
               children: [
                 Expanded(
                   child: Padding(
                     padding:
-                        const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                     child: Text(
                       text,
                       style: textStyle,
@@ -92,15 +77,20 @@ class BubbleSpecialThree extends StatelessWidget {
                     ),
                   ),
                 ),
-                Row(
+                Column(
                   children: [
-                    Text(dateTime),
-                    stateTick
-                        ? const Icon(
-                      Icons.done_all,
-                      size: 18,
-                      color: AppColors.messageDateTimeReceiver,
-                    ) : const SizedBox.shrink(),
+                    SizedBox(height: MediaQuery.of(context).size.width * .04,),
+                    Row(
+                      children: [
+                        Text(dateTime),
+                        stateTick
+                            ? const Icon(
+                          Icons.done_all,
+                          size: 18,
+                          color: AppColors.messageDateTimeReceiver,
+                        ) : const SizedBox.shrink(),
+                      ],
+                    ),
                   ],
                 )
               ],

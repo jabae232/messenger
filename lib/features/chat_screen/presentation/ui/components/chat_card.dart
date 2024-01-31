@@ -40,13 +40,20 @@ class ChatCard extends StatelessWidget {
           style: AppStyles.s15w600,
         ),
         subtitle: Text(
-          'Уже сделал?',
+          chat.messages.last.sender ? 'Вы: ${chat.messages.last.message}' : chat.messages.last.message,
           style: AppStyles.s12w500.copyWith(color: AppColors.darkGrey),
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
         ),
-        trailing: Text(
-          chat.messages.last.dateTime,
-          style: AppStyles.s12w500.copyWith(color: AppColors.darkGrey),
-        ),
+        trailing: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Text(
+              chat.messages.last.dateTime,
+              style: AppStyles.s12w500.copyWith(color: AppColors.darkGrey),
+            ),
+          ],
+        )
       ),
     );
   }
