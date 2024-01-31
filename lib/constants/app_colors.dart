@@ -9,4 +9,7 @@ class AppColors {
   static const green = Color(0xFF1FDB5F);
   static const red = Color(0xFFF66700);
   static const blue = Color(0xFF00ACF6);
+  static const messageBackgroundSender = Color(0xFF3CED78);
+  static const messageDateTimeReceiver= Color(0xFF00521C);
+  static const messageBackgroundReceiver = Color(0xFFEDF2F6);
 }
