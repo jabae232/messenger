@@ -64,34 +64,39 @@ class BubbleSpecialThree extends StatelessWidget {
                 ? const EdgeInsets.fromLTRB(7, 7, 14, 7)
                 : const EdgeInsets.fromLTRB(7, 7, 17, 7)
                 : const EdgeInsets.fromLTRB(17, 7, 7, 7),
-            child: Row(
+            child: Stack(
+              alignment: Alignment.topLeft,
               children: [
-                Expanded(
-                  child: Padding(
-                    padding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                    child: Text(
-                      text,
-                      style: textStyle,
-                      textAlign: TextAlign.left,
-                    ),
+                Padding(
+                  padding:
+                  const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  child: Row(
+                    children: [
+                      Text(
+                        text,
+                        style: textStyle,
+                        textAlign: TextAlign.left,
+                        maxLines: 40,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      Spacer(),
+                    ],
                   ),
                 ),
-                Column(
-                  children: [
-                    SizedBox(height: MediaQuery.of(context).size.width * .04,),
-                    Row(
-                      children: [
-                        Text(dateTime),
-                        stateTick
-                            ? const Icon(
-                          Icons.done_all,
-                          size: 18,
-                          color: AppColors.messageDateTimeReceiver,
-                        ) : const SizedBox.shrink(),
-                      ],
-                    ),
-                  ],
+                Positioned(
+                  bottom: 0,
+                  right: 0,
+                  child: Row(
+                    children: [
+                      Text(dateTime),
+                      stateTick
+                          ? const Icon(
+                        Icons.done_all,
+                        size: 18,
+                        color: AppColors.messageDateTimeReceiver,
+                      ) : const SizedBox.shrink(),
+                    ],
+                  ),
                 )
               ],
             ),

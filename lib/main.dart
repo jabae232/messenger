@@ -6,7 +6,6 @@ import 'features/init/dependencies_provider/dependencies_provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setEnabledSystemUIMode(SystemUiMode.leanBack);
   await SharedPrefs.init();
   runApp(
     DependenciesProvider(

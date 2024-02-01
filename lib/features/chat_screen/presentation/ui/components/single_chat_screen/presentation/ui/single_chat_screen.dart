@@ -6,6 +6,7 @@ import 'package:messanger/constants/app_assets.dart';
 import 'package:messanger/constants/app_styles.dart';
 import 'package:messanger/features/chat_screen/data/dto/dto.dart';
 import 'package:messanger/features/chat_screen/presentation/state/chat_screen_bloc.dart';
+import 'package:messanger/features/chat_screen/presentation/ui/components/date_formatter.dart';
 import 'package:messanger/features/chat_screen/presentation/ui/components/single_chat_screen/presentation/ui/components/pressable_btn.dart';
 import 'package:messanger/features/chat_screen/presentation/ui/components/single_chat_screen/presentation/viewmodel/single_chat_view_model.dart';
 import '../../../../../../../../constants/app_colors.dart';
@@ -92,7 +93,7 @@ class SingleChatScreen extends StatelessWidget {
                       ? messages.messages[messages.messages.length - index - 1]
                       : vm.messages[vm.messages.length - index - 1];
                   return BubbleSpecialThree(
-                    dateTime: message.dateTime,
+                    dateTime: DateFormatter().getProperDate(DateTime.tryParse(message.dateTime) ?? DateTime.now(), context),
                     isSender: message.sender,
                     seen: message.sender ? true : false,
                     delivered: message.sender ? true : false,
@@ -141,9 +142,7 @@ class SingleChatScreen extends StatelessWidget {
                                 SendMessageEvent(
                                   message: vm.controller.text,
                                   id: messages.id,
-                                  dateTime: DateFormat('HH:mm').format(
-                                    DateTime.now(),
-                                  ),
+                                  dateTime: DateTime.now().toString(),
                                 ),
                               );
                           context.read<ChatScreenBloc>().add(
